@@ -6,13 +6,13 @@ Análise exploratória dos planos de saúde oferecidos aos colaboradores da empr
 ---
 
 ## 📌 Objetivo
-Investigar como a localização (região) dos colaboradores influencia na escolha de operadoras e modalidades de plano de saúde.
+Investigar como a localização (região) dos colaboradores influência na escolha de operadoras e modalidades de plano de saúde.
 
 ---
 
 ## 🧩 Dados Utilizados
-- `colaboradores.xlsx`: contém CPF, nome, cidade, UF, status.
-- `plano_de_saude.xlsx`: contém CPF, operadora e modalidade do plano.
+- `colaboradores.xlsx`: contém: CPF, nome, cidade, UF, status.
+- `plano_de_saude.xlsx`: contém: CPF, operadora e modalidade do plano.
 
 ---
 
@@ -43,7 +43,7 @@ Investigar como a localização (região) dos colaboradores influencia na escolh
 - `analise_planos_por_regiao.xlsx`
 - `colaboradores_por_regiao.xlsx`
 - `operadoras_por_regiao.xlsx`
-- Gráficos em tela ou salvos como imagem (opcional)
+- Gráficos em tela
 
 ---
 
