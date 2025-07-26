@@ -11,8 +11,8 @@ Investigar como a localização (região) dos colaboradores influência na escol
 ---
 
 ## 🧩 Dados Utilizados
-- `colaboradores.xlsx`: contém: CPF, nome, cidade, UF, status.
-- `plano_de_saude.xlsx`: contém: CPF, operadora e modalidade do plano.
+- `colaboradores.xlsx`: CPF, Nome, Cidade, UF, Status.
+- `plano_de_saude.xlsx`: CPF, Operadora e Modalidade do Plano.
 
 ---
 
