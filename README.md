@@ -32,7 +32,9 @@ Investigar como a localização (região) dos colaboradores influência na escol
 
 ## 📊 Gráficos Gerados
 
-- Distribuição de colaboradores por região
+- Distribuição de colaboradores por região:
+- <img width="900" height="540" alt="image" src="https://github.com/user-attachments/assets/f225c9cf-2199-4672-9105-3a74a4b66ef9" />
+
 - Adesão por operadora em cada região
 - Modalidade de plano por região
 
