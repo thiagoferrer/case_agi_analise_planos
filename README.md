@@ -35,10 +35,10 @@ Investigar como a localização (região) dos colaboradores influência na escol
 - Distribuição de colaboradores por região:
 <img width="900" height="540" alt="image" src="https://github.com/user-attachments/assets/f225c9cf-2199-4672-9105-3a74a4b66ef9" />
 
-- Adesão por operadora em cada região
+- Adesão por operadora em cada região:
 <img width="900" height="442" alt="image" src="https://github.com/user-attachments/assets/af0c4e99-8c92-4cda-8bbf-7080a949969b" />
 
-- Modalidade de plano por região
+- Modalidade de plano por região:
 <img width="900" height="442" alt="image" src="https://github.com/user-attachments/assets/164adf2b-6edc-49cf-9d75-a98e8c88e1de" />
 
 ---
