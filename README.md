@@ -76,4 +76,4 @@ Investigar como a localização (região) dos colaboradores influência na escol
 - Beginner, com atuação no time de SGP – Serviços de Gestão de Pessoas – 2025  
 - Projeto desenvolvido para a **SGP Tech | Agibank**
 
----
+
