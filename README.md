@@ -72,7 +72,3 @@ Investigar como a localização (região) dos colaboradores influencia na escolh
 - Projeto desenvolvido para a **SGP Tech | Agibank**
 
 ---
-
-## 📅 Entrega
-
-- Arquivos entregues até 28/07/2025 às 12h
