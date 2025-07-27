@@ -89,7 +89,6 @@ Investigar como a localização (região) dos colaboradores influência na escol
 
 ## 📚 Referências
 
-- IBGE - Instituto Brasileiro de Geografia e Estatística. Divisão regional do Brasil.  
 - Bibliotecas utilizadas: pandas, matplotlib, seaborn, openpyxl.
 
 
