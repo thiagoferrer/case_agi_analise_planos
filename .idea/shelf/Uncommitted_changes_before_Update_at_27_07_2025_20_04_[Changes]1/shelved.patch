@@ -1,0 +1,131 @@
+Index: analise.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import pandas as pd\r\n\r\n# Carregar os arquivos\r\ncolab = pd.read_excel(\"colaboradores.xlsx\")\r\nplanos = pd.read_excel(\"plano_de_saude.xlsx\")\r\n\r\n# Visualizar as 5 primeiras linhas\r\nprint(\"Colaboradores:\")\r\nprint(colab.head())\r\nprint(\"\\nPlanos de Saúde:\")\r\nprint(planos.head())\r\n\r\n# Verificar colunas e tipos\r\nprint(\"\\nInfo colaboradores:\")\r\nprint(colab.info())\r\n\r\nprint(\"\\nInfo planos:\")\r\nprint(planos.info())\r\n\r\n# Verificar valores nulos\r\nprint(\"\\nValores nulos em colaboradores:\")\r\nprint(colab.isnull().sum())\r\n\r\nprint(\"\\nValores nulos em planos:\")\r\nprint(planos.isnull().sum())\r\n\r\n#Tratar e unir os dados\r\n# Converter CPF para string nos dois DataFrames\r\ncolab['cpf'] = colab['cpf'].astype(str).str.replace('.', '').str.replace('-', '').str.strip()\r\nplanos['cpf'] = planos['cpf'].astype(str).str.strip()\r\n\r\n\r\n# Juntar as duas tabelas pela coluna 'cpf'\r\ndf = pd.merge(colab, planos, on='cpf', how='inner')\r\n\r\n# Exibir resultado\r\nprint(\"\\nBase unificada:\")\r\nprint(df.head())\r\n\r\n# Mapeando UFs para regiões do Brasil\r\ndf.columns = df.columns.str.lower().str.strip()\r\n\r\n# Mapeando UFs para regiões do Brasil\r\nregioes = {\r\n    'Norte': ['AC', 'AP', 'AM', 'PA', 'RO', 'RR', 'TO'],\r\n    'Nordeste': ['AL', 'BA', 'CE', 'MA', 'PB', 'PE', 'PI', 'RN', 'SE'],\r\n    'Centro-Oeste': ['DF', 'GO', 'MT', 'MS'],\r\n    'Sudeste': ['ES', 'MG', 'RJ', 'SP'],\r\n    'Sul': ['PR', 'RS', 'SC']\r\n}\r\n\r\n# Função para mapear região com tratamento\r\ndef definir_regiao(uf):\r\n    if pd.isna(uf):\r\n        return \"Indefinida\"\r\n    uf = str(uf).upper().strip()\r\n    for regiao, estados in regioes.items():\r\n        if uf in estados:\r\n            return regiao\r\n    return \"Indefinida\"\r\n\r\n# Criar nova coluna 'regiao'\r\ndf['regiao'] = df['uf'].apply(definir_regiao)\r\n\r\n\r\n#Importar bibliotecas de visualização\r\nimport matplotlib.pyplot as plt\r\nimport seaborn as sns\r\n\r\n# Ajustes visuais\r\nsns.set(style=\"whitegrid\")\r\n\r\n#Quantidade de colaboradores por região\r\nplt.figure(figsize=(10,6))\r\nsns.countplot(data=df, x='regiao', order=df['regiao'].value_counts().index)\r\nplt.title(\"Quantidade de colaboradores por região\")\r\nplt.xlabel(\"Região\")\r\nplt.ylabel(\"Número de colaboradores\")\r\nplt.xticks(rotation=45)\r\nplt.tight_layout()\r\nplt.show()\r\n\r\n#Operadoras mais populares por região\r\n# Tabela de frequência\r\ntabela_operadoras = df.groupby(['regiao', 'operadora']).size().reset_index(name='quantidade')\r\n\r\n# Plotar gráfico por região\r\nplt.figure(figsize=(12,8))\r\nsns.barplot(data=tabela_operadoras, x='regiao', y='quantidade', hue='operadora')\r\nplt.title(\"Adesão por operadora em cada região\")\r\nplt.xlabel(\"Região\")\r\nplt.ylabel(\"Quantidade de adesões\")\r\nplt.legend(title=\"Operadora\")\r\nplt.tight_layout()\r\nplt.show()\r\n\r\n#Modalidade mais escolhida por região\r\ntabela_modalidade = df.groupby(['regiao', 'modalidade do plano']).size().reset_index(name='quantidade')\r\n\r\nplt.figure(figsize=(12,8))\r\nsns.barplot(data=tabela_modalidade, x='regiao', y='quantidade', hue='modalidade do plano')\r\nplt.title(\"Modalidade do plano por região\")\r\nplt.xlabel(\"Região\")\r\nplt.ylabel(\"Quantidade de adesões\")\r\nplt.legend(title=\"Modalidade\")\r\nplt.tight_layout()\r\nplt.show()\r\n\r\n#Salvar relatório (resumo dos dados)\r\n# Salvar planilha resumo com todas as informações\r\ndf.to_excel(\"analise_planos_por_regiao.xlsx\", index=False)\r\n\r\n# Salvar contagem por região\r\ndf['regiao'].value_counts().to_excel(\"colaboradores_por_regiao.xlsx\")\r\n\r\n# Salvar contagem por operadora e região\r\ntabela_operadoras.to_excel(\"operadoras_por_regiao.xlsx\", index=False)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/analise.py b/analise.py
+--- a/analise.py	(revision bb63e73ab47ca90ca72236c2d73b822e70566147)
++++ b/analise.py	(date 1753657329733)
+@@ -1,46 +1,37 @@
+ import pandas as pd
+ 
+-# Carregar os arquivos
+ colab = pd.read_excel("colaboradores.xlsx")
+ planos = pd.read_excel("plano_de_saude.xlsx")
+ 
+-# Visualizar as 5 primeiras linhas
+ print("Colaboradores:")
+ print(colab.head())
+ print("\nPlanos de Saúde:")
+ print(planos.head())
+ 
+-# Verificar colunas e tipos
+ print("\nInfo colaboradores:")
+ print(colab.info())
+ 
+ print("\nInfo planos:")
+ print(planos.info())
+ 
+-# Verificar valores nulos
+ print("\nValores nulos em colaboradores:")
+ print(colab.isnull().sum())
+ 
+ print("\nValores nulos em planos:")
+ print(planos.isnull().sum())
+ 
+-#Tratar e unir os dados
+-# Converter CPF para string nos dois DataFrames
++# Tratar e unir os dados
+ colab['cpf'] = colab['cpf'].astype(str).str.replace('.', '').str.replace('-', '').str.strip()
+ planos['cpf'] = planos['cpf'].astype(str).str.strip()
+ 
+-
+-# Juntar as duas tabelas pela coluna 'cpf'
+ df = pd.merge(colab, planos, on='cpf', how='inner')
+ 
+-# Exibir resultado
+ print("\nBase unificada:")
+ print(df.head())
+ 
+ # Mapeando UFs para regiões do Brasil
+ df.columns = df.columns.str.lower().str.strip()
+ 
+-# Mapeando UFs para regiões do Brasil
+ regioes = {
+     'Norte': ['AC', 'AP', 'AM', 'PA', 'RO', 'RR', 'TO'],
+     'Nordeste': ['AL', 'BA', 'CE', 'MA', 'PB', 'PE', 'PI', 'RN', 'SE'],
+@@ -49,6 +40,7 @@
+     'Sul': ['PR', 'RS', 'SC']
+ }
+ 
++
+ # Função para mapear região com tratamento
+ def definir_regiao(uf):
+     if pd.isna(uf):
+@@ -59,19 +51,19 @@
+             return regiao
+     return "Indefinida"
+ 
++
+ # Criar nova coluna 'regiao'
+ df['regiao'] = df['uf'].apply(definir_regiao)
+ 
+-
+-#Importar bibliotecas de visualização
++# Importar bibliotecas de visualização
+ import matplotlib.pyplot as plt
+ import seaborn as sns
+ 
+ # Ajustes visuais
+ sns.set(style="whitegrid")
+ 
+-#Quantidade de colaboradores por região
+-plt.figure(figsize=(10,6))
++# Quantidade de colaboradores por região
++plt.figure(figsize=(10, 6))
+ sns.countplot(data=df, x='regiao', order=df['regiao'].value_counts().index)
+ plt.title("Quantidade de colaboradores por região")
+ plt.xlabel("Região")
+@@ -80,12 +72,10 @@
+ plt.tight_layout()
+ plt.show()
+ 
+-#Operadoras mais populares por região
+-# Tabela de frequência
++# Operadoras mais populares por região
+ tabela_operadoras = df.groupby(['regiao', 'operadora']).size().reset_index(name='quantidade')
+ 
+-# Plotar gráfico por região
+-plt.figure(figsize=(12,8))
++plt.figure(figsize=(12, 8))
+ sns.barplot(data=tabela_operadoras, x='regiao', y='quantidade', hue='operadora')
+ plt.title("Adesão por operadora em cada região")
+ plt.xlabel("Região")
+@@ -94,10 +84,9 @@
+ plt.tight_layout()
+ plt.show()
+ 
+-#Modalidade mais escolhida por região
+ tabela_modalidade = df.groupby(['regiao', 'modalidade do plano']).size().reset_index(name='quantidade')
+ 
+-plt.figure(figsize=(12,8))
++plt.figure(figsize=(12, 8))
+ sns.barplot(data=tabela_modalidade, x='regiao', y='quantidade', hue='modalidade do plano')
+ plt.title("Modalidade do plano por região")
+ plt.xlabel("Região")
+@@ -106,12 +95,9 @@
+ plt.tight_layout()
+ plt.show()
+ 
+-#Salvar relatório (resumo dos dados)
+-# Salvar planilha resumo com todas as informações
++# Salvar relatório (resumo dos dados)
+ df.to_excel("analise_planos_por_regiao.xlsx", index=False)
+ 
+-# Salvar contagem por região
+ df['regiao'].value_counts().to_excel("colaboradores_por_regiao.xlsx")
+ 
+-# Salvar contagem por operadora e região
+ tabela_operadoras.to_excel("operadoras_por_regiao.xlsx", index=False)

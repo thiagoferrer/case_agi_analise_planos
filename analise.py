@@ -24,7 +24,6 @@ print(colab.isnull().sum())
 print("\nValores nulos em planos:")
 print(planos.isnull().sum())
 
-#Tratar e unir os dados
 # Converter CPF para string nos dois DataFrames
 colab['cpf'] = colab['cpf'].astype(str).str.replace('.', '').str.replace('-', '').str.strip()
 planos['cpf'] = planos['cpf'].astype(str).str.strip()
@@ -80,7 +79,6 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 
-#Operadoras mais populares por região
 # Tabela de frequência
 tabela_operadoras = df.groupby(['regiao', 'operadora']).size().reset_index(name='quantidade')
 
@@ -106,7 +104,6 @@ plt.legend(title="Modalidade")
 plt.tight_layout()
 plt.show()
 
-#Salvar relatório (resumo dos dados)
 # Salvar planilha resumo com todas as informações
 df.to_excel("analise_planos_por_regiao.xlsx", index=False)
 
