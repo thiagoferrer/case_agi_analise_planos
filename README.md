@@ -1,35 +1,34 @@
-# 📊 Análise de Adesão aos Planos de Saúde por Região
+#  Análise de Adesão aos Planos de Saúde por Região
 
-## 📁 Projeto
+##  Projeto
 Análise exploratória dos planos de saúde oferecidos aos colaboradores da empresa Agibank, com foco na **distribuição regional de adesão**.
 
 ---
 
-## 📌 Objetivo
+##  Objetivo
 Investigar como a localização (região) dos colaboradores influência na escolha de operadoras e modalidades de plano de saúde.
 
 ---
 
-## 🧩 Dados Utilizados
+##  Dados Utilizados
 - `colaboradores.xlsx`: CPF, Nome, Cidade, UF, Status.
 - `plano_de_saude.xlsx`: CPF, Operadora e Modalidade do Plano.
 
 ---
 
-## 🛠️ Metodologia
+##  Metodologia
 
 1. Leitura das planilhas utilizando a biblioteca Pandas.  
 2. Inspeção dos dados quanto a estrutura e valores nulos.  
 3. Padronização do campo CPF para possibilitar o cruzamento das bases.  
-4. Classificação dos colaboradores por região, conforme divisão oficial do IBGE.  
-5. Tratamento dos dados: limpeza, remoção de duplicidades e padronização.  
-6. Junção (merge) das bases pelo CPF.  
-7. Análise exploratória com gráficos (Seaborn).  
-8. Geração de arquivos de saída e relatório final.
+4. Tratamento dos dados: limpeza, remoção de duplicidades e padronização.  
+5. Junção (merge) das bases pelo CPF.  
+6. Análise exploratória com gráficos (Seaborn).  
+7. Geração de arquivos de saída e relatório final.
 
 ---
 
-## 📊 Gráficos Gerados
+##  Gráficos Gerados
 
 - Distribuição de colaboradores por região:
 <img width="900" height="540" alt="image" src="https://github.com/user-attachments/assets/f225c9cf-2199-4672-9105-3a74a4b66ef9" />
@@ -42,7 +41,7 @@ Investigar como a localização (região) dos colaboradores influência na escol
 
 ---
 
-## 💡 Principais Resultados
+##  Principais Resultados
 
 - As operadoras preferidas variam de acordo com a região.  
 - A região Sudeste apresenta o maior volume de adesões.  
@@ -53,7 +52,7 @@ Investigar como a localização (região) dos colaboradores influência na escol
 
 ---
 
-## 📁 Saídas
+##  Saídas
 
 - `analise_planos_por_regiao.xlsx`
 - `colaboradores_por_regiao.xlsx`
@@ -70,7 +69,7 @@ Investigar como a localização (região) dos colaboradores influência na escol
 
 ---
 
-## 🧠 Requisitos Técnicos
+##  Requisitos Técnicos
 
 - Python 3.10+
 - Pandas
@@ -80,14 +79,14 @@ Investigar como a localização (região) dos colaboradores influência na escol
 
 ---
 
-## 👤 Autor
+##  Autor
 
 - Thiago Ferrer  
 - Beginner, com atuação no time de SGP – Serviços de Gestão de Pessoas – 2025  
 - Projeto desenvolvido para a **SGP Tech | Agibank**
 ---
 
-## 📚 Referências
+##  Referências
 
 - Bibliotecas utilizadas: pandas, matplotlib, seaborn, openpyxl.
 
