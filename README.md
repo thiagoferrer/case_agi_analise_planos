@@ -61,7 +61,7 @@ Investigar como a localização (região) dos colaboradores influência na escol
 
 ---
 
-## 💡 Principais Resultados
+##  Principais Resultados
 
 - Operadoras preferidas variam por região
 - Região Sudeste tem maior volume de adesões
